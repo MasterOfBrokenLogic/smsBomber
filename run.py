@@ -2,20 +2,10 @@ import sys
 import os
 import asyncio
 
-# Ensure project root is in PYTHONPATH
-ROOT = os.path.dirname(os.path.abspath(__file__))
-if ROOT not in sys.path:
-    sys.path.insert(0, ROOT)
+# add project root to python path
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 from bot.main import main
 
-
-async def start():
-    await main()
-
-
 if __name__ == "__main__":
-    try:
-        asyncio.run(start())
-    except KeyboardInterrupt:
-        print("Bot stopped.")
+    asyncio.run(main())
